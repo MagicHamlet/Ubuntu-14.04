@@ -1,0 +1,24 @@
+1。原本只有一个空模块，也就是下面这俩函数
+  模块安装、退出函数  static int __init chrdev_init(void)
+
+2. 首先定义一个file_operation结构体变量，并且去填充。
+   
+
+3 . 然后在static int __init chrdev_init(void)函数中(也就是模块安装函数) 去注册
+// 在module_init宏调用的函数中去注册字符设备驱动 ，因为module_init所声明的这个__init chrdev_init函数，是在将来我们装载这个驱动的时候才执行，
+所以我们把注册驱动的方法函数，放在 安装模块的函数中。
+
+4.填充file_operation的时候 会填充open和release ，所以接下来要写open和realease函数。
+
+5. 下一步是 设备的注册 和 注销函数了。
+注册 ： 在模块安装函数里注册，也就是init函数里 。调用register_chrdev。给他主设备号
+注销： 。。。
+
+
+
+
+
+
+
+
+
